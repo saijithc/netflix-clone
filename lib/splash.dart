@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/home.dart';
+import 'package:netflix/bottom.dart';
+
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -23,5 +24,5 @@ class _SplashState extends State<Splash> {
 Future<void> gotohome(BuildContext context) async {
   await Future.delayed(const Duration(seconds: 2));
   Navigator.of(context)
-      .pushReplacement(MaterialPageRoute(builder: (ctx) =>  Home()));
+      .pushReplacement(MaterialPageRoute(builder: (ctx) =>  Bottom()));
 }

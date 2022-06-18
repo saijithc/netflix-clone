@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -54,55 +56,96 @@ class Home extends StatelessWidget {
             ),
           ),
            SliverToBoxAdapter(
-            child: Container(color: Colors.black,
-              height: MediaQuery.of(context).size.width*0.11,
+            child: Container(
+              height: 20,color: Colors.black,
               child: Center(
                 child: Row(mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width*0.03,top: MediaQuery.of(context).size.width*0.02),
-                      child: const Text('Popular on Netflix',style: TextStyle(color: Colors.white),),
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text('Popular on Netflix',style: TextStyle(color: Colors.white,fontSize:  MediaQuery.of(context).size.width*0.04),),
                     ),
                   ],
                 ),
               ),
             ),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    Container(decoration: BoxDecoration(color: Colors.black),
-                      
-                      height: 200.0,
-                      child: Center(
-                        child: Text('hei', textScaleFactor: 5),
-                      ),
-                    ),Container(decoration: BoxDecoration(color: Color.fromARGB(255, 167, 106, 106)),
-                      
-                      height: 200.0,
-                      child: Center(
-                        child: Text('hei', textScaleFactor: 5),
-                      ),),Container(decoration: BoxDecoration(color: Colors.black),
-                      
-                      height: 200.0,
-                      child: Center(
-                        child: Text('hei', textScaleFactor: 5),
-                      ),
-                    ),
-                      Container(decoration: BoxDecoration(color: Color.fromARGB(255, 249, 87, 87)),
-                      
-                      height: 200.0,
-                      child: Center(
-                        child: Text('hei', textScaleFactor: 5),
-                      ),)
-                  ],
-                );
-              },
-              childCount: 1,
+           SliverToBoxAdapter(
+            child: Container(color: Colors.black,
+              height: MediaQuery.of(context).size.height*0.3,
+              child:    SizedBox(
+                child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: 10,
+                        itemBuilder: (BuildContext ctx, index){
+
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(height: MediaQuery.of(context).size.height*0.09,width: MediaQuery.of(context).size.width*0.5,child: Image.asset('assets/money.jpg',fit: BoxFit.cover,),),
+                        );
+                      }),
+              )
+             
             ),
           ),
+            SliverToBoxAdapter(
+            child: Container(
+              height: 20,color: Colors.black,
+              child: Center(
+                child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text('Trending Now',style: TextStyle(color: Colors.white,fontSize:  MediaQuery.of(context).size.width*0.04),),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ), SliverToBoxAdapter(
+            child: Container(color: Colors.black,
+              height: MediaQuery.of(context).size.height*0.3,
+              child:    SizedBox(
+                child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: 10,
+                        itemBuilder: (BuildContext ctx, index){
+
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(height: MediaQuery.of(context).size.height*0.09,width: MediaQuery.of(context).size.width*0.5,child: Image.asset('assets/money.jpg',fit: BoxFit.cover,),),
+                        );
+                      }),
+              )
+             
+            ),
+          ),  SliverToBoxAdapter(
+            child: Container(
+              height: 20,color: Colors.black,
+              child: Center(
+                child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text('Only on Netflix',style: TextStyle(color: Colors.white,fontSize: MediaQuery.of(context).size.width*0.04),),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ), SliverToBoxAdapter(
+            child: Container(color: Colors.black,
+              height: MediaQuery.of(context).size.height*0.3,
+              child:    SizedBox(
+                child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: 10,
+                        itemBuilder: (BuildContext ctx, index){
+
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(height: MediaQuery.of(context).size.height*0.09,width: MediaQuery.of(context).size.width*0.5,child: Image.asset('assets/money.jpg',fit: BoxFit.cover,),),
+                        );
+                      }),
+              )
+             
+            ),
+          ),
+       
         ],
       ),
       );
