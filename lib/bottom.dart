@@ -13,7 +13,7 @@ class Bottom extends StatefulWidget {
 }
 
 class _BottomState extends State<Bottom> {
-  final List pages=[const Home(),const Coming(),const FastLaugh(),const Downloads()];
+  final List pages=[const Home(),const Coming(),const Fastlaugh(),const Downloads()];
   int _currentIndex =0;
   @override
   Widget build(BuildContext context) {
