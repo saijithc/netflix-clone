@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/home.dart';
 import 'package:netflix/splash.dart';
 
-void main() {
-  
+void main() async{
+  await  Home.loadmovies();
   runApp(const MyApp());
 }
 
