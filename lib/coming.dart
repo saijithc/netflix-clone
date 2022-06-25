@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix/details.dart';
 import 'package:netflix/home.dart';
 import 'package:tmdb_api/tmdb_api.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class Coming extends StatefulWidget {
@@ -30,24 +31,37 @@ class _ComingState extends State<Coming> {
        child:    SizedBox(
          child: ListView.builder(itemCount:Home.comingsoon.length,
                  itemBuilder: (BuildContext ctx, index){
-                 return Column(children: [Padding(
+                 return Column(children: [Row(
+                   children: [SizedBox(width: MediaQuery.of(context).size.width*0.05,),
+                     Flexible(
+                       child: Text(Home.comingsoon[index]['title']??'',style: GoogleFonts.actor(textStyle: TextStyle(color: Colors.white,fontSize:  MediaQuery.of(context).size.width*0.05,
+                       
+                         fontWeight: FontWeight.w700, letterSpacing: .5)),maxLines: 2,),
+                     ),
+                   ],
+                 ),
+                  Padding(
                    padding: const EdgeInsets.all(10),
                    child: InkWell(
                     onTap: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>Details(name:Home.comingsoon[index]['title'] ?? 'Loading..',
                        description: Home.comingsoon[index]['overview'] ?? 'Loading..', 
-                       bannerurl:'http://image.tmdb.org/t/p/w500'+ Home.comingsoon[index]['backdrop_path']  , 
+                       bannerurl:'http://image.tmdb.org/t/p/w500'+ Home.comingsoon[index]['backdrop_path'] , 
                         posterurl:  'http://image.tmdb.org/t/p/w500'+ Home.comingsoon[index]['poster_path'],
                          vote:  Home.comingsoon[index]['vote_average']??'Loading..', relese: Home.comingsoon[index]['release_date']??'Loading..')));
                     },
-                     child: Container(height: MediaQuery.of(context).size.height*0.27,
+                     child: Container(height: MediaQuery.of(context).size.height*0.27,width: MediaQuery.of(context).size.width*0.9,
                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
                                         image: DecorationImage(image: NetworkImage('http://image.tmdb.org/t/p/w500'+ Home.comingsoon[index]['poster_path'],),
                                       fit: BoxFit.fill
                                       )),
                      ),
                    ),
-                 ),],);
+                 ),Row(
+                   children: [SizedBox(width: MediaQuery.of(context).size.width*0.05,),
+                     Flexible(child: Text( Home.comingsoon[index]['overview']??'Loading..' ,style: GoogleFonts.aBeeZee(textStyle: TextStyle(color: Colors.white,overflow: TextOverflow.ellipsis)),maxLines: 2,)),
+                   ],
+                 ),SizedBox(height: MediaQuery.of(context).size.height*0.05,)],);
      
                }),
        )
