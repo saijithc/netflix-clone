@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/details.dart';
 import 'package:netflix/home.dart';
-import 'package:tmdb_api/tmdb_api.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -59,7 +59,7 @@ class _ComingState extends State<Coming> {
                    ),
                  ),Row(
                    children: [SizedBox(width: MediaQuery.of(context).size.width*0.05,),
-                     Flexible(child: Text( Home.comingsoon[index]['overview']??'Loading..' ,style: GoogleFonts.aBeeZee(textStyle: TextStyle(color: Colors.white,overflow: TextOverflow.ellipsis)),maxLines: 2,)),
+                     Flexible(child: Text( Home.comingsoon[index]['overview']??'Loading..' ,style: GoogleFonts.aBeeZee(textStyle: const TextStyle(color: Colors.white,overflow: TextOverflow.ellipsis)),maxLines: 2,)),
                    ],
                  ),SizedBox(height: MediaQuery.of(context).size.height*0.05,)],);
      

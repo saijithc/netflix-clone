@@ -9,7 +9,7 @@ class Downloads extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(backgroundColor: Colors.black,
-      appBar: AppBar(title: const Text('Downloads',),backgroundColor: Colors.black,actions: [IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+      appBar: AppBar(title: const Text('Downloads',),backgroundColor: Colors.black,actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.search)),
       IconButton(onPressed: (){}, icon: const Icon(Icons.email_rounded,color: Color.fromARGB(255, 138, 237, 196),))],),
       body: Column(crossAxisAlignment: CrossAxisAlignment.center,
         children: [const Center(child: Text('Introducing Downloads for You',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w700),),  ),
