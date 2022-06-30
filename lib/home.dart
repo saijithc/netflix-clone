@@ -1,10 +1,6 @@
-
-
 import 'package:flutter/material.dart';
-
-import 'package:netflix/topRated.dart';
-import 'package:netflix/trending.dart';
-import 'package:netflix/tv.dart';
+import 'package:netflix/indexchange.dart';
+import 'package:netflix/listshowing.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 class Home extends StatefulWidget {
   static List trendingmovies =[];
@@ -15,6 +11,7 @@ class Home extends StatefulWidget {
   static  List comingsoon =[];
 
  static loadmovies()async{
+  
  TMDB tmdbWithCustomeLogs = TMDB(ApiKeys(apikey, readaccesstoken),logConfig: const ConfigLogger(showLogs: true,showErrorLogs: true));
  Map trendingresults = await tmdbWithCustomeLogs.v3.trending.getTrending();
  Map topratedresults = await tmdbWithCustomeLogs.v3.movies.getTopRated();
@@ -36,6 +33,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget  build(BuildContext context) {
+    IndexChanging.getnumvalue(1);
     return Scaffold  (backgroundColor: Colors.black,
       body:
      CustomScrollView (
@@ -80,7 +78,7 @@ class _HomeState extends State<Home> {
              const SizedBox(height: 10,), Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,crossAxisAlignment: CrossAxisAlignment.end, children: [Column(children: const [Icon(Icons.add,color: Colors.white,),Text('My List',style: TextStyle(color: Color.fromARGB(255, 235, 226, 226)) ),],),
               ElevatedButton(style: ElevatedButton.styleFrom(primary: Colors.white), onPressed: (){}, child: Row(children: const [Icon(Icons.play_arrow ,color: Colors.black,),Text('Play',style: TextStyle(color: Color.fromARGB(255, 16, 16, 16)) )],)),
               Row(children: [Column(children: const [Icon(Icons.info_outline,color: Colors.white,),Text('info',style: TextStyle(color: Color.fromARGB(255, 235, 226, 226)) )],)],) ],)], ),
-                width: double.infinity,height: MediaQuery.of(context).size.height*0.15,decoration:  BoxDecoration(image: DecorationImage(image: NetworkImage ('http://image.tmdb.org/t/p/w500'+Home.trendingmovies[0]['poster_path']),fit: BoxFit.cover))),
+                width: double.infinity,height: MediaQuery.of(context).size.height*0.15,decoration:  BoxDecoration(image: DecorationImage(image: NetworkImage ('http://image.tmdb.org/t/p/w500'+Home.trendingmovies[IndexChanging.number??0]['poster_path']),fit: BoxFit.cover))),
             ),
           ),
    //<<<<<<<<.........................T.R.E.N.D.I.N.G....................>>>>>/////       
@@ -100,7 +98,7 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-           const SliverToBoxAdapter(child:Trendinglist() ),
+            SliverToBoxAdapter(child:Listshowing(list: Home.trendingmovies,date: 'release_date',name: 'title',height: 0.26,width: 0.4,) ),
      //<<<<<<<<..................E.N.D.I.N.G.......T.R.E.N.D.I.N.G....................>>>>>/////    
 //---------------------------------------------------------------------------------------------/////
      //<<<<<<<<.........................T.O.P....R.A.T.E.D.....................>>>>>/////       
@@ -118,8 +116,8 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-          ), const SliverToBoxAdapter(
-             child: TopRated()
+          ),  SliverToBoxAdapter(
+             child: Listshowing(list: Home.topratedmovies,date: 'release_date',name: 'title',height: 0.27,width: 0.5)
             
           ), 
      //<<<<<<<<......................E.N.D.I.N.G...T.O.P....R.A.T.E.D.....................>>>>>/////  
@@ -141,8 +139,8 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-          ), const SliverToBoxAdapter(
-            child:TvScreen()
+          ),  SliverToBoxAdapter(
+            child:Listshowing(list: Home.tv,date: 'first_air_date',name: 'original_name',height: 0.26,width: 0.4)
           ),
      //<<<<<.....................E.N.D.I.N.G....T.V...S.H.O.W.S..........................>>>>>>>////          
         ],

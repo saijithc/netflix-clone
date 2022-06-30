@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/home.dart';
+import 'package:netflix/indexchange.dart';
 import 'package:netflix/splash.dart';
 
 void main() async{
-  await  Home.loadmovies();
+  await  Home.loadmovies();  
+   
   runApp(const MyApp());
 }
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
       
-        primarySwatch: Colors.brown,
+        primarySwatch: Colors.blue,
       ),
       home: const Splash() ,
     );

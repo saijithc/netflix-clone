@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'home.dart';
 class Downloads extends StatelessWidget {
@@ -18,7 +19,7 @@ class Downloads extends StatelessWidget {
           child: Text('We''ll Download a personalized selection of movies and shows for you, so there is always something to watch on your phone.',style: TextStyle(color: Color.fromARGB(255, 183, 179, 179)),),
         )),
          SizedBox(height: MediaQuery.of(context).size.height*0.08),
-        Stack(children:[ CircleAvatar(radius: MediaQuery.of(context).size.height*0.2,),
+        Stack(children:[ CircleAvatar(radius: MediaQuery.of(context).size.height*0.2,backgroundColor: const Color.fromARGB(255, 65, 65, 64),),
         Transform.rotate(angle: -19*pi/180,
           child: Container(margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.01,top: MediaQuery.of(context).size.height*0.08),
             width: MediaQuery.of(context).size.width*0.4,height:MediaQuery.of(context).size.width*0.6,
@@ -34,6 +35,14 @@ class Downloads extends StatelessWidget {
             width: MediaQuery.of(context).size.width*0.4,height:MediaQuery.of(context).size.width*0.6,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.amber,
             image:DecorationImage(image: NetworkImage('http://image.tmdb.org/t/p/w500'+ Home.trendingmovies[4]['poster_path'],),fit: BoxFit.fill) ),),
-        ],)],));
+        ],),SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(width: double.infinity,
+            child: ElevatedButton(
+              onPressed: (){}, child: Text('Set Up',style:  GoogleFonts.abhayaLibre(textStyle: const TextStyle(color: Colors.white)),)),
+          ),
+        ),ElevatedButton(style: ElevatedButton.styleFrom(primary: const Color.fromARGB(255, 62, 62, 61)),
+          onPressed: (){}, child: Text('Find Moore To Download',style:   GoogleFonts.abhayaLibre(textStyle: const TextStyle(color: Colors.white)),))],));
   }
 }
